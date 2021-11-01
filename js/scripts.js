@@ -3,3 +3,6 @@
 It might explain, in detail, why we made a certain decision. Or, it could show examples about how to use the following code snippet. */
 
 alert('Hello World');
+
+let favoriteFood = 'Chicken Tikka Masala';
+document.write(favoriteFood);
