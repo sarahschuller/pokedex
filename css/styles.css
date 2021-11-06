@@ -1,4 +1,23 @@
 body {
   color: black;
   background-color: lightgray;
+  font-family: 'Mochiy Pop One', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1 {
+  color: white;
+  background-color: red;
+  padding: 10px 10px;
+  margin: 30px 30px;
+  max-width: 500px;
+  text-align: center;
+}
+
+section {
+  background-color: white;
+  padding: 10px 10px;
+  margin: 30px 30px;
+  max-width: 500px;
+  text-align: center;
 }
