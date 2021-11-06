@@ -1,3 +1,4 @@
+//list of Pokemon and their height, type(s), and abilities
 let pokemonList= [
   {
     name:'Typhlosion',
@@ -36,6 +37,8 @@ let pokemonList= [
     abilities: ['Flash Fire']
   },
 ];
+
+//displays the list of Pokemon with descriptive text dependent on the Pokemon height.
 
 let text = " ";
 for (let i = 0; i < pokemonList.length; i++){
