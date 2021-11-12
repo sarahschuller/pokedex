@@ -73,14 +73,14 @@ function add(pokemon) {
 
 //displays the list of Pokemon with descriptive text dependent on the Pokemon height.
 
-pokemonRepository.getAll().forEach(printPokedex);
+pokemonRepository.getAll().forEach(myPokemonIndex);
 
-function printPokedex(pokemon) {
+function myPokemonIndex(pokemon) {
   document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')');
   if (pokemon.height > 10) {
-    document.write(" <i>Wow, that's big!</i>");
+    document.write(" <i>Wow, that's big!</i>" + '</p>');
   }
   else if (pokemon.height < 3) {
-    document.write(" <i>This Pokemon is tiny!</i>");
+    document.write(" <i>This Pokemon is tiny!</i>" + '</p>');
   }
 }
