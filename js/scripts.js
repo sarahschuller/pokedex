@@ -78,9 +78,10 @@ pokemonRepository.getAll().forEach(myPokemonIndex);
 function myPokemonIndex(pokemon) {
   document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')');
   if (pokemon.height > 10) {
-    document.write(" <i>Wow, that's big!</i>" + '</p>');
+    document.write(" <i>Wow, that's big!</i>");
   }
   else if (pokemon.height < 3) {
-    document.write(" <i>This Pokemon is tiny!</i>" + '</p>');
+    document.write(" <i>This Pokemon is tiny!</i>");
   }
+  document.write('</p>')
 }
