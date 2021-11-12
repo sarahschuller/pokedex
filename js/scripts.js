@@ -1,5 +1,6 @@
 //list of Pokemon and their height, type(s), and abilities
-let pokemonList= [
+let pokemonRepository = (function () {
+  let pokemonList= [
   {
     name:'Typhlosion',
     height: 5.7,
@@ -56,15 +57,30 @@ let pokemonList= [
   }
 ];
 
+function add(pokemon) {
+   pokemonList.push(pokemon);
+ }
+
+ function getAll() {
+   return pokemonList;
+ }
+
+ return {
+   add: add,
+   getAll: getAll
+ };
+})();
+
 //displays the list of Pokemon with descriptive text dependent on the Pokemon height.
 
-pokemonList.forEach(function (pokemon) {
-  if (pokemon.height <10 && pokemon.height >3)
-    document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')' + '</p>');
+pokemonRepository.getAll().forEach(myPokemonIndex);
 
-  else if (pokemon.height > 10)
-    document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')' + " <i>Wow! That's Big!</i>" + '</p>');
-
-  else if (pokemon.height < 3)
-    document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')' + " <i>This Pokemon is Tiny!</i>" + '</p>');
-});
+function myPokemonIndex(pokemon) {
+  document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')');
+  if (pokemon.height > 10) {
+    document.write(" <i>Wow, that's big!</i>");
+  }
+  else if (pokemon.height < 3) {
+    document.write(" <i>This Pokemon is tiny!</i>");
+  }
+}
