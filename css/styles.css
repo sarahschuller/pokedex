@@ -9,15 +9,40 @@ h1 {
   color: white;
   background-color: red;
   padding: 10px 10px;
-  margin: 30px 30px;
-  max-width: 700px;
+  margin: 10px 40px;
+  width: 500px;
   text-align: center;
+  border: 3px solid black;
+  box-sizing: border-box;
 }
 
 section {
   background-color: white;
   padding: 10px 10px;
   margin: 30px 30px;
-  max-width: 700px;
+  max-width: 500px;
   text-align: center;
+  border: 2px solid black;
+}
+
+button {
+  background-color: white;
+  padding: 5px 5px;
+  margin: 2px 0px;
+  border: none;
+  width: 500px;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background-color: red;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
 }
