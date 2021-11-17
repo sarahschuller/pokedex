@@ -1,7 +1,7 @@
-//list of Pokemon and their height, type(s), and abilities
 let pokemonRepository = (function () {
-  let pokemonList= [
-  {
+  //current repository of Pokemon with name, height, type, and abilities
+  let repository = [
+    {
     name:'Typhlosion',
     height: 5.7,
     type: ['Fire'],
@@ -55,33 +55,57 @@ let pokemonRepository = (function () {
     type: ['Rock', ' Ground'],
     abilities: ['Rock Head', ' Sturdy'],
   }
-];
+  ];
 
-function add(pokemon) {
-   pokemonList.push(pokemon);
- }
+  //function to add new Pokemon and its details to the repository
+  function add(pokemon) {
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon &&
+      "height" in pokemon &&
+      "type" in pokemon &&
+      "abilities" in pokemon
+    ) {
+      repository.push(pokemon);
+    } else {
+      console.log("Pokemon is incorrect");
+    }
+  }
 
- function getAll() {
-   return pokemonList;
- }
+  function getAll() {
+    return repository;
+  }
 
- return {
-   add: add,
-   getAll: getAll
- };
+//Shows Pokemon name in console
+  function showDetails(pokemon){
+    console.log(pokemon.name);
+  };
+
+  //function to display list of Pokemon as buttons
+  function addListItem(pokemon){
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    button.addEventListener('click', function(){
+    showDetails(pokemon);
+  });
+
+  }
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem,
+    showDetails: showDetails,
+  };
 })();
 
-//displays the list of Pokemon with descriptive text dependent on the Pokemon height.
+pokemonRepository.add({ name: "Pikachu", height: 0.3, type: ["electric"] });
 
-pokemonRepository.getAll().forEach(myPokemonIndex);
+console.log(pokemonRepository.getAll());
 
-function myPokemonIndex(pokemon) {
-  document.write('<p>' + pokemon.name + ' (' + 'Type: ' + pokemon.type + ';' + ' Abilities:'  + pokemon.abilities + ';' + ' Height: ' + pokemon.height + ')');
-  if (pokemon.height > 10) {
-    document.write(" <i>Wow, that's big!</i>");
-  }
-  else if (pokemon.height < 3) {
-    document.write(" <i>This Pokemon is tiny!</i>");
-  }
-  document.write('</p>')
-}
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
