@@ -1,71 +1,12 @@
 let pokemonRepository = (function () {
   //current repository of Pokemon with name, height, type, and abilities
-  let repository = [
-    {
-    name:'Typhlosion',
-    height: 5.7,
-    type: ['Fire'],
-    abilities: ['Blaze']
-  },
-  {
-    name:'Gengar',
-    height: 4.11,
-    type: ['Ghost', ' Poison'],
-    abilities: ['Cursed Body']
-  },
-   {
-    name:'Whimsicott',
-    height: 2.4,
-    type: ['Grass', ' Fairy'],
-    abilities: ['Prankster', ' Infiltrator'],
-  },
-  {
-    name:'Greninja',
-    height: 4.11,
-    type: ['Water',' Dark'],
-    abilities: ['Torrent']
-  },
-  {
-    name:'Umbreon',
-    height: 3.3,
-    type: ['Dark'],
-    abilities: ['Synchronize']
-  },
-  {
-    name:'Luxray',
-    height: 4.7,
-    type: ['Electric'],
-    abilities: ['Intimidate', ' Rivalry']
-  },
-  {
-    name:'Ninetales',
-    height: 3.7,
-    type: ['Fire'],
-    abilities: ['Flash Fire']
-  },
-  {
-    name:'Petilil',
-    height: 1.08,
-    type: ['Grass'],
-    abilities: ['Chlorophyl', ' Own Tempo']
-  },
-  {
-    name:'Onix',
-    height: 28.10,
-    type: ['Rock', ' Ground'],
-    abilities: ['Rock Head', ' Sturdy'],
-  }
-  ];
+  let repository = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
 
   //function to add new Pokemon and its details to the repository
   function add(pokemon) {
     if (
-      typeof pokemon === "object" &&
-      "name" in pokemon &&
-      "height" in pokemon &&
-      "type" in pokemon &&
-      "abilities" in pokemon
-    ) {
+      typeof pokemon === 'object') {
       repository.push(pokemon);
     } else {
       console.log("Pokemon is incorrect");
@@ -77,10 +18,11 @@ let pokemonRepository = (function () {
   }
 
 //Shows Pokemon name in console
-  function showDetails(pokemon){
-    console.log(pokemon.name);
-  };
-
+function showDetails(pokemon) {
+   loadDetails(pokemon).then(function () {
+     console.log(pokemon);
+   });
+ }
   //function to display list of Pokemon as buttons
   function addListItem(pokemon){
     let pokemonList = document.querySelector(".pokemon-list");
@@ -94,18 +36,48 @@ let pokemonRepository = (function () {
   });
 
   }
+//function to load Pokemon API
+function loadList() {
+  return fetch(apiUrl).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+    json.results.forEach(function (item) {
+      let pokemon = {
+        name: item.name,
+        detailsUrl: item.url
+      };
+      add(pokemon);
+    });
+  }).catch(function (e) {
+    console.error(e);
+  })
+};
+//Fetches Pokemon data from the API and adds it to the pokemonList
+  function loadDetails(item) {
+      let url = item.detailsUrl;
+      return fetch(apiUrl).then(function (response) {
+        return response.json();
+      }).then(function (details) {
+        item.height = details.height;
+        item.types = details.type;
+        item.abilities = details.abilities;
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
+
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
     showDetails: showDetails,
+    loadList: loadList,
+    loadDetails: loadDetails,
   };
 })();
 
-pokemonRepository.add({ name: "Pikachu", height: 0.3, type: ["electric"] });
-
-console.log(pokemonRepository.getAll());
-
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
+  });
 });
