@@ -1,6 +1,5 @@
 body {
-  color: black;
-  background-color: lightgray;
+  background-color: gray;
   font-family: 'Mochiy Pop One', sans-serif;
   font-family: 'Quicksand', sans-serif;
 }
@@ -9,20 +8,23 @@ h1 {
   color: white;
   background-color: red;
   padding: 10px 10px;
-  margin: 10px 40px;
+  margin: 5px 40px;
   width: 500px;
   text-align: center;
   border: 3px solid black;
   box-sizing: border-box;
 }
 
-section {
-  background-color: white;
-  padding: 10px 10px;
-  margin: 30px 30px;
-  max-width: 500px;
-  text-align: center;
+div {
+  background-color: lightgray;
+  padding: 0px 0px;
+  margin: 10px 40px;
+  width: 580px;
   border: 2px solid black;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 button {
