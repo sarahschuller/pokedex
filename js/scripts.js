@@ -25,9 +25,9 @@ function showDetails(pokemon) {
  }
   //function to display list of Pokemon as buttons
   function addListItem(pokemon){
-    let pokemonList = document.querySelector(".pokemon-list");
-    let listpokemon = document.createElement("li");
-    let button = document.createElement("button");
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listpokemon = document.createElement('li');
+    let button = document.createElement('button');
     button.innerText = pokemon.name;
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
@@ -55,11 +55,11 @@ function loadList() {
 //Fetches Pokemon data from the API and adds it to the pokemonList
   function loadDetails(item) {
       let url = item.detailsUrl;
-      return fetch(apiUrl).then(function (response) {
+      return fetch('https://pokeapi.co/api/v2/pokemon/').then(function (response) {
         return response.json();
       }).then(function (details) {
         item.height = details.height;
-        item.types = details.type;
+        item.types = details.types;
         item.abilities = details.abilities;
       }).catch(function (e) {
         console.error(e);
