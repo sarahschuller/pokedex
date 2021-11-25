@@ -48,7 +48,7 @@ let pokemonRepository = (function () {
 
   function loadDetails(item) {
     let url = item.detailsUrl;
-    return fetch('https://pokeapi.co/api/v2/pokemon/?limit=150').then(function (response) {
+    return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
       item.imageUrl = details.sprites.front_default;
