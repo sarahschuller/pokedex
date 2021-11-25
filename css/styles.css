@@ -69,6 +69,15 @@ ul {
   text-decoration: underline;
 }
 
+.modal h1 {
+  max-width: 200px;
+}
+
+.modal button:hover {
+  color: white;
+}
+}
+
 #modal-container {
   display: none;
 }
