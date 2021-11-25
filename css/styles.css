@@ -48,3 +48,11 @@ ul {
   justify-content: center;
 
 }
+
+#modal-container {
+  display: none;
+}
+
+#modal-container.is-visible {
+  display: block;
+}
