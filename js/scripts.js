@@ -92,7 +92,7 @@ let pokemonRepository = (function () {
     modal.appendChild(imgElement);
     modalContainer.appendChild(modal);
 
-  modalContainer.classList.add('is-visible');
+    modalContainer.classList.add('is-visible');
 
     function hideModal() {
       modalContainer.classList.remove('is-visible');
@@ -103,7 +103,6 @@ let pokemonRepository = (function () {
     });
 
     window.addEventListener('keydown', (e) => {
-      let modalContainer = document.querySelector('#modal-container');
       if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
         hideModal();
       }
