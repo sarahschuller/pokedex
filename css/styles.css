@@ -1,0 +1,33 @@
+.pokemon-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin: 100px 10px;
+    list-style: none;
+  }
+
+.pokebutton {
+  
+}
+@media all and (max-width: 500px) {
+  .pokemon-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px){
+  .pokemon-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width:750px){
+  /* shared code */
+  .pokemon-list {
+    grid-gap: 10px;
+  }
+  .pokemon-list__item:last-child {
+    grid-column: auto / auto;
+    grid-row: auto / auto;
+  }
+}
