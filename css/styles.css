@@ -1,3 +1,4 @@
+
 .pokemon-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -7,8 +8,13 @@
   }
 
 .pokebutton {
-  
+
 }
+
+.navbar {
+  background: #dc3545;
+}
+
 @media all and (max-width: 500px) {
   .pokemon-list {
     grid-template-columns: 1fr;
