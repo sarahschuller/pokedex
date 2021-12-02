@@ -13,3 +13,5 @@ Javascript
 HTML
 CSS
 Bootstrap
+
+Project Page - https://sarahschuller.github.io/pokedex/
