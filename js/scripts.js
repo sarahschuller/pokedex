@@ -47,11 +47,11 @@ let pokemonRepository = (function () {
       })
       .then(function (json) {
         json.results.forEach(function (item) {
-          let pokemon = {
+          let item = {
             name: item.name,
             detailsUrl: item.url,
           };
-          add(pokemon);
+          add(item);
         });
       })
       .catch(function (e) {
@@ -92,7 +92,7 @@ let pokemonRepository = (function () {
 
     // Create content to be appended to the modal
     let nameElement = $('<h1>' + pokemon.name + '</h1>');
-    let imageElement = $('<img class="modal-img" style="width:50%">');
+    let imageElement = $('<img class="modal-img" style="width:100%">');
     imageElement.attr('src', pokemon.imageUrl);
     let heightElement = $('<p>' + 'Height : ' + pokemon.height + '</p>');
     let weightElement = $('<p>' + 'Weight : ' + pokemon.weight + '</p>');
