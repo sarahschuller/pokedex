@@ -16,4 +16,4 @@ Bootstrap
 
 Project Page - https://sarahschuller.github.io/pokedex/
 
-![image](https://user-images.githubusercontent.com/93050611/144506363-d68d78f5-928f-42d7-8162-f75c82cd503d.png)
+![image](https://github.com/sarahschuller/pokedex/blob/main/2022-05-01.png)
